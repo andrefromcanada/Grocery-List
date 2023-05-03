@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Grocery List</title>
+        <style>
+            html{
+                background-color: rgb(29, 91, 86);
+            }
+            li {
+                margin-bottom: 20px;
+            }
+
+            li button{
+                font-size: 10px;
+                margin-left: 30px;
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Grocery List</h1>
+
+        <div>
+            <label for="item">Add New Item: </label>
+            <input type="text" name="item" id = "item">
+            <button>ADD</button>
+
+        <ul>
+
+        </ul>
+        <script>
+            const list = document.querySelector('ul');
+            const input = document.querySelector('input');
+            const button = document.querySelector('button');
+
+            button.onclick = function () {
+                let newItem = input.value;
+                input.value = '';
+
+                let itemList = document.createElement('li');
+                let itemText = document.createElement('span');
+                let itemBtn = document.createElement('button');
+
+                itemList.appendChild(itemText);
+                itemText.textContent = newItem;
+
+                itemList.appendChild(itemBtn);
+                itemBtn.textContent = 'DELETE';
+
+                list.appendChild(itemList);
+
+                itemBtn.onclick = function () {
+                    list.removeChild(itemList);
+                }
+
+                input.focus();
+
+            }
+        </script>
+        </div>
+    </body>
+</html>
